@@ -29,7 +29,7 @@ module JSON
       def <<(data)
         # Avoid state machine for complete UTF-8.
         if @buffer.empty?
-          (+data).force_encoding(Encoding::UTF_8)
+          data = (+data).force_encoding(Encoding::UTF_8)
           return data if data.valid_encoding?
         end
 
